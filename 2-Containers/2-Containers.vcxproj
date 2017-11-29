@@ -114,6 +114,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="tvector.h" />
     <ClInclude Include="intvector.h" />
     <ClInclude Include="test.h" />
   </ItemGroup>

@@ -22,7 +22,10 @@ public:
 	void erase(int index);
 	int count(int value) const;
 	void insert(int value, int index);
-	void reserve();
+	void reserve(int capacity);
+	void compact();
+	void printVector();
+	
 private:
 	bool grow(size_t minSize);
 

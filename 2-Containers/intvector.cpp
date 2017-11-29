@@ -1,6 +1,7 @@
 #include "intvector.h"
 #include <cassert>
 #include <cstring>
+#include <iostream>
 intVector::intVector() {
 	capacity = 2;
 	data = new int[capacity];
@@ -31,6 +32,7 @@ int & intVector::append(int val)
 	}
 	data[size] = val;
 	++size;
+	return val;
 	//asserts and what not protect yourself from when you code at 3 am and make bad mistakes
 }
 
@@ -87,8 +89,11 @@ void intVector::clear()
 }
 
 void intVector::erase(int index) {
-	for (int i = 0; i < size; i++) {
-		data[index] = data[index + 1];
+	for (int i = index; i < size; i++) {
+		/*data[index+i] = data[index + i + 1]; kinda does the smae thinkg*/
+		int temp = data[i];
+		data[i] = data[i + 1];
+		data[i + 1] = temp;
 	}
 	size -= 1;
 }
@@ -108,14 +113,44 @@ void intVector::insert(int value, int index)
 {
 	assert(index >= 0);
 	assert(index <= size);
-	if (capacity == size) {
+	/*if (capacity == size) {
 		capacity++;
 	}
 	size++;
 	for (int i = 0; i < size; i++) {
 		data[index] = data[index + 1];
 	}
-	data[index] == value;
+	data[index] == value;*/
+
+	append(value);
+	for (int i = size; i >= index; i--) {
+		int temp = data[i];
+		data[i] = data[i - 1];
+		data[i - 1] = temp;
+	}
+}
+
+void intVector::reserve(int newcapacity)
+{
+	if (newcapacity < capacity) {
+
+		int * newData = new int[newcapacity];
+		memcpy(newData, data, sizeof(int)*size);
+		delete[] data;
+		data = newData;
+		capacity = newcapacity;
+	}
+}
+
+void intVector::compact()
+{
+	if (capacity > size) {
+		capacity = size;
+		int * newData = new int[size];
+		memcpy(newData, data, sizeof(int)*size);
+		delete[] data;
+		data = newData;
+	}
 }
 
 bool intVector::grow(size_t minSize) {
@@ -139,4 +174,8 @@ bool intVector::grow(size_t minSize) {
 	return true;
 }
 
+void intVector::printVector() {
+	for (int i = 0; i < size; i++)
+		std::cout << data[i] << std::endl;
 
+}
