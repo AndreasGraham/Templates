@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{ABEC1761-4BE4-4051-9824-896D7828A26E}</ProjectGuid>
-    <RootNamespace>My2Containers</RootNamespace>
+    <ProjectGuid>{FD9FE42D-8CD0-400B-9152-4D5B2C7C81D4}</ProjectGuid>
+    <RootNamespace>LlinkList</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -110,16 +110,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="intvector.cpp" />
-    <ClCompile Include="intLInkedList.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="intLinkedList.h" />
-    <ClInclude Include="tLinkedList.h" />
-    <ClInclude Include="tvector.h" />
-    <ClInclude Include="intvector.h" />
-    <ClInclude Include="test.h" />
+    <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
