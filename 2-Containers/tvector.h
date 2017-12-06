@@ -1,5 +1,7 @@
 #pragma once
-
+#include <cassert>
+#include <cstring>
+#include "iterator.h"
 template<typename T>
 class tVector {
 	T * data;
@@ -13,6 +15,13 @@ public:
 		size = 0;
 	}
 	~tVector();
+	iterator<tVector<T>> begin() {
+		return iterator<tVector<T>>(*this, 0);
+	}
+
+	iterator<tVector<T>> end() {
+		return iterator<tVector<T>>(*this, size); // goes one past final location 
+	}
 
 	T& at(size_t idx);
 	T& append(T val);
@@ -169,3 +178,4 @@ void tVector<T>::EraseRange(size_t start, size_t end) {
 	}
 	size = size - (end - start);
 }
+

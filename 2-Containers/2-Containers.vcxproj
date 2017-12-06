@@ -115,7 +115,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="algorithms.h" />
     <ClInclude Include="intLinkedList.h" />
+    <ClInclude Include="iterator.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="tLinkedList.h" />
     <ClInclude Include="tvector.h" />
     <ClInclude Include="intvector.h" />

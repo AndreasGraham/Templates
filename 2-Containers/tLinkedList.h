@@ -13,6 +13,7 @@ class tLinkedList {
 	void clear();
 	void erase(size_t index);
 	void insert(size_t index, T value);
+	size_t size();
 	
 private:
 	struct tLinkedListNode {
@@ -29,6 +30,20 @@ tLinkedList::tLinkedList()
 	:(nullptr)
 {
 	clear();
+}
+
+template<typename T>
+size_t tLinkedList<T>::size() {
+	int count = 0;
+	tLinkedListNode * iter = head;
+	if (head == nullptr) {
+		return 1;
+	}
+	while (iter != nullptr) {
+		count++;
+		iter = iter->next;
+	}
+	return count;
 }
 
 template<typename T>

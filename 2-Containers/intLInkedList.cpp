@@ -15,6 +15,7 @@ void intLinkedList::append(int value) {
 	intLinkedListNode * newNode = new intLinkedListNode;
 	newNode->value = value;
 	newNode->next = nullptr;
+	newNode->prev = nullptr;
 	if (head == nullptr) {
 		head = newNode;
 	}
@@ -25,6 +26,7 @@ void intLinkedList::append(int value) {
 			iter = iter->next;
 		}
 		iter->next = newNode;
+		newNode->prev = iter;
 	}
 }
 // head = start
@@ -91,20 +93,20 @@ void intLinkedList::insert(int index, int value) {
 void intLinkedList::erase(int ind) {
 	int counter = 0;
 	intLinkedListNode * iter = head;
-	intLinkedListNode * prev = iter;
+	intLinkedListNode * previous = iter;
 	
 	while (counter != ind) {
 		counter++;
-		prev = iter;
+		previous = iter;
 		iter = iter->next;
 	}
 
 	assert(ind == counter);
 	if(iter->next != nullptr){ 
-		prev->next = iter->next; 
+		previous->next = iter->next; 
 	}
 	else {
-		prev->next = nullptr;
+		previous->next = nullptr;
 	}
 	delete iter;
 }
