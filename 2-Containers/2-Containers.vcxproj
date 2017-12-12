@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="algorithms.h" />
+    <ClInclude Include="HashMap.h" />
     <ClInclude Include="intLinkedList.h" />
     <ClInclude Include="iterator.h" />
     <ClInclude Include="Queue.h" />
