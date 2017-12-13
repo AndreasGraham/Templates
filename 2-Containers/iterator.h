@@ -19,7 +19,7 @@ public:
 	{
 	}
 
-	iterator<T>& operator=(cost iterator<T>& other) {
+	iterator<T>& operator=(const iterator<T>& other) {
 		owningContainer = other.owningContainer;
 		currentIndex = other.currentIndex;
 	}

@@ -9,6 +9,9 @@ class tVector {
 	size_t size;
 
 public:
+	/*T * data;
+	size_t capacity;
+	size_t size;*/
 	tVector() {
 		capacity = 2;
 		data = new T[capacity];
@@ -23,44 +26,68 @@ public:
 		return iterator<tVector<T>>(*this, size); // goes one past final location 
 	}
 
+	
+	T & operator[](const size_t idx) {
+		return data[idx];
+	};
+
+	T operator[](const size_t idx) const{
+		return data[idx];
+	};
+
 	T& at(size_t idx);
 	T& append(T val);
-	T& returnData();
+	T* returnData();
 	bool grow(size_t minSize);
+	size_t getSize() const;
+	size_t getCapacity() const;
+	bool empty() const;
+	T front() const;
+	T back() const;
+	void pop();
+	T returnIndex(size_t index);
+	void clear();
+	void erase(size_t Idx);
+	int count(size_t val);
+	void insert(size_t val, size_t idx);
+	void Reserve(size_t newCapacity);
+	void Compact();
+	void EraseRange(size_t start, size_t end);
+	void setSize(size_t newSize);
 };
 
-template<typename T>
-tVector::tVector() {
-	capacity = 2;
-	data = new T[capacity];
-	size = 0;
-}
+//template<typename T>
+//tVector<T>::tVector() {
+//	capacity = 2;
+//	data = new T[capacity];
+//	size = 0;
+//}
 
 template<typename T>
-tVector::~tVector() {
+tVector<T>::~tVector() {
 	delete[] data;
 }
 
 template<typename T>
-T tVector<T>::at(size_t idx) {
+T& tVector<T>::at(size_t idx) {
 	return data[idx];
 }
 
 
 template<typename T>
-size_t tVector<T>::returnData() const {
+T* tVector<T>::returnData() {
 	return *data;
 }
 
 template<typename T>
-T tVector<T>::append(T val) {
+T& tVector<T>::append(T val) {
 	if (size == capacity) {
 		bool didGrow = grow(size + 1);
 		assert(didGrow);
 	}
 	data[size] = val;
 	++size;
-	return val
+	return val;
 }
 
 template<typename T>
@@ -122,8 +149,8 @@ void tVector<T>::clear() {
 }
 
 template<typename T>
-void tVector<T>::erase(Idx) {
-	for (int i = index; i < size; i++) {
+void tVector<T>::erase(size_t Idx) {
+	for (int i = Idx; i < size; i++) {
 		int temp = data[i];
 		data[i] = data[i + 1];
 		data[i + 1] = temp;
@@ -144,7 +171,7 @@ int tVector<T>::count(size_t val) {
 template<typename T>
 void tVector<T>::insert(size_t val, size_t idx) {
 	append(val);
-	for (int i = size; i >= index; i--) {
+	for (int i = size; i >= idx; i--) {
 		int temp = data[i];
 		data[i] = data[i - 1];
 		data[i - 1] = temp;
@@ -179,3 +206,7 @@ void tVector<T>::EraseRange(size_t start, size_t end) {
 	size = size - (end - start);
 }
 
+template<typename T>
+void tVector<T>::setSize(size_t newSize) {
+	size = newSize;
+}

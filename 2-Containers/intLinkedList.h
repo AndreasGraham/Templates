@@ -21,7 +21,7 @@ private:
 	struct intLinkedListNode {
 		int value;
 		intLinkedListNode* next;
-		intLinkedListNode * prev
+		intLinkedListNode * prev;
 	};
 	intLinkedListNode* head;
 	intLinkedListNode * tail; 

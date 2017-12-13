@@ -26,7 +26,7 @@ private:
 };
 
 template<typename T>
-tLinkedList::tLinkedList()
+tLinkedList<T>::tLinkedList()
 	:(nullptr)
 {
 	clear();
